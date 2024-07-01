@@ -53,6 +53,25 @@ Linux
 sudo docker run -d --name emqx -p 18083:18083 -p 1883:1883 -p 8083:8083 emqx:latest
 ```
 
-## 7. Aplicación de ejemplo de uso
+## 7. Desplegando nuestro tercer servicio (InfluxDB)
+```sh
+docker run -d -p 8086:8086 -v "$PWD/data:/var/lib/influxdb2" -v "$PWD/config:/etc/influxdb2" -e DOCKER_INFLUXDB_INIT_MODE=setup -e DOCKER_INFLUXDB_INIT_USERNAME=<USERNAME> -e DOCKER_INFLUXDB_INIT_PASSWORD=<PASSWORD> -e DOCKER_INFLUXDB_INIT_ORG=<ORG_NAME> -e DOCKER_INFLUXDB_INIT_BUCKET=<BUCKET_NAME> influxdb:2
+```
+Linux
+```sh
+sudo docker run -d -p 8086:8086 -v "$PWD/data:/var/lib/influxdb2" -v "$PWD/config:/etc/influxdb2" -e DOCKER_INFLUXDB_INIT_MODE=setup -e DOCKER_INFLUXDB_INIT_USERNAME=<USERNAME> -e DOCKER_INFLUXDB_INIT_PASSWORD=<PASSWORD> -e DOCKER_INFLUXDB_INIT_ORG=<ORG_NAME> -e DOCKER_INFLUXDB_INIT_BUCKET=<BUCKET_NAME> influxdb:2
+```
 
-## 8. ¿Como replicar esto en Cloud?
+## 8. Desplegando nuestro cuarto servicio (Grafana)
+
+```sh
+docker run -d --name=grafana -p 3000:3000 grafana/grafana
+```
+Linux
+```sh
+sudo docker run -d --name=grafana -p 3000:3000 grafana/grafana
+```
+
+## 8. Aplicación de ejemplo de uso
+
+## 9. ¿Como replicar esto en Cloud?
