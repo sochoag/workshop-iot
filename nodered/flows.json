@@ -1,20 +1,20 @@
 [
     {
-        "id": "f6f2187d.f17ca8",
+        "id": "41ddcab0a6276329",
         "type": "tab",
         "label": "Flow 1",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "44c7fe1e5aa4338c",
+        "id": "2ba1d0bd04b6f18c",
         "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
+        "z": "41ddcab0a6276329",
         "name": "Voltaje",
         "topic": "voltage",
         "qos": "0",
         "datatype": "auto-detect",
-        "broker": "8da5853be28faac8",
+        "broker": "e5d2582f188b9655",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -23,34 +23,16 @@
         "y": 400,
         "wires": [
             [
-                "0104f0ad46c9a208",
-                "a5a535e44ecf8210",
-                "19af8f3551c5aff6"
+                "7e2902b0b6060b37",
+                "d1f11ea6691924b6",
+                "c416a3641dc31b68"
             ]
         ]
     },
     {
-        "id": "0104f0ad46c9a208",
-        "type": "influxdb out",
-        "z": "f6f2187d.f17ca8",
-        "influxdb": "9cf08b7da591b815",
-        "name": "Influx",
-        "measurement": "voltage",
-        "precision": "",
-        "retentionPolicy": "",
-        "database": "database",
-        "precisionV18FluxV20": "ms",
-        "retentionPolicyV18Flux": "",
-        "org": "3a52b4cb4689f549",
-        "bucket": "esp32data",
-        "x": 450,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "425a05727bc9c4d6",
+        "id": "36be6e57c338aedd",
         "type": "mqtt out",
-        "z": "f6f2187d.f17ca8",
+        "z": "41ddcab0a6276329",
         "name": "",
         "topic": "led",
         "qos": "0",
@@ -60,15 +42,15 @@
         "userProps": "",
         "correl": "",
         "expiry": "",
-        "broker": "8da5853be28faac8",
+        "broker": "e5d2582f188b9655",
         "x": 710,
         "y": 120,
         "wires": []
     },
     {
-        "id": "a5a535e44ecf8210",
+        "id": "d1f11ea6691924b6",
         "type": "debug",
-        "z": "f6f2187d.f17ca8",
+        "z": "41ddcab0a6276329",
         "name": "debug 1",
         "active": false,
         "tosidebar": true,
@@ -82,16 +64,53 @@
         "wires": []
     },
     {
-        "id": "3e19f2b967907f6b",
+        "id": "37fcfa5291b7c8ef",
+        "type": "debug",
+        "z": "41ddcab0a6276329",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "af1209e65762ba67",
+        "type": "mqtt in",
+        "z": "41ddcab0a6276329",
+        "name": "Led Status",
+        "topic": "ledesp",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e5d2582f188b9655",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 120,
+        "wires": [
+            [
+                "87afa45ddc1dc428"
+            ]
+        ]
+    },
+    {
+        "id": "87afa45ddc1dc428",
         "type": "ui_switch",
-        "z": "f6f2187d.f17ca8",
+        "z": "41ddcab0a6276329",
         "name": "Light",
         "label": "Light",
         "tooltip": "",
-        "group": "8b922718819a2d7b",
-        "order": 0,
-        "width": 0,
-        "height": 0,
+        "group": "f48ab89f1f1d9be2",
+        "order": 2,
+        "width": "4",
+        "height": "4",
         "passthru": true,
         "decouple": "false",
         "topic": "topic",
@@ -111,73 +130,18 @@
         "y": 120,
         "wires": [
             [
-                "425a05727bc9c4d6",
-                "7f6ec70dc0a6d92f",
-                "c0f4cb511630ff3d"
+                "36be6e57c338aedd",
+                "37fcfa5291b7c8ef",
+                "8d47273f465b969b"
             ]
         ]
     },
     {
-        "id": "7f6ec70dc0a6d92f",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 720,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "f21d96ce9e9a3cc9",
-        "type": "mqtt in",
-        "z": "f6f2187d.f17ca8",
-        "name": "Led Status",
-        "topic": "ledesp",
-        "qos": "0",
-        "datatype": "auto-detect",
-        "broker": "8da5853be28faac8",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 260,
-        "y": 120,
-        "wires": [
-            [
-                "3e19f2b967907f6b"
-            ]
-        ]
-    },
-    {
-        "id": "c0f4cb511630ff3d",
-        "type": "influxdb out",
-        "z": "f6f2187d.f17ca8",
-        "influxdb": "9cf08b7da591b815",
-        "name": "LightStatus",
-        "measurement": "lightstatus",
-        "precision": "",
-        "retentionPolicy": "",
-        "database": "database",
-        "precisionV18FluxV20": "ms",
-        "retentionPolicyV18Flux": "",
-        "org": "3a52b4cb4689f549",
-        "bucket": "esp32data",
-        "x": 730,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "19af8f3551c5aff6",
+        "id": "c416a3641dc31b68",
         "type": "ui_gauge",
-        "z": "f6f2187d.f17ca8",
+        "z": "41ddcab0a6276329",
         "name": "",
-        "group": "8b922718819a2d7b",
+        "group": "ac1fac2e281a3936",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -201,10 +165,98 @@
         "wires": []
     },
     {
-        "id": "8da5853be28faac8",
+        "id": "7e2902b0b6060b37",
+        "type": "influxdb out",
+        "z": "41ddcab0a6276329",
+        "d": true,
+        "influxdb": "4e954bda12fdf9a2",
+        "name": "Influx",
+        "measurement": "voltage",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "3a52b4cb4689f549",
+        "bucket": "esp32data",
+        "x": 450,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8d47273f465b969b",
+        "type": "influxdb out",
+        "z": "41ddcab0a6276329",
+        "d": true,
+        "influxdb": "4e954bda12fdf9a2",
+        "name": "LightStatus",
+        "measurement": "lightstatus",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "3a52b4cb4689f549",
+        "bucket": "esp32data",
+        "x": 730,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "95aedc8854693f1b",
+        "type": "mqtt out",
+        "z": "41ddcab0a6276329",
+        "name": "RGB",
+        "topic": "rgb",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e5d2582f188b9655",
+        "x": 530,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "0795110f83a12204",
+        "type": "ui_colour_picker",
+        "z": "41ddcab0a6276329",
+        "name": "",
+        "label": "Seleccionar",
+        "group": "8b83edaadf622644",
+        "format": "hex",
+        "outformat": "string",
+        "showSwatch": true,
+        "showPicker": true,
+        "showValue": true,
+        "showHue": false,
+        "showAlpha": false,
+        "showLightness": true,
+        "square": "false",
+        "dynOutput": "false",
+        "order": 3,
+        "width": "4",
+        "height": "4",
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 270,
+        "y": 300,
+        "wires": [
+            [
+                "95aedc8854693f1b"
+            ]
+        ]
+    },
+    {
+        "id": "e5d2582f188b9655",
         "type": "mqtt-broker",
         "name": "",
-        "broker": "172.16.182.29",
+        "broker": "192.168.0.120",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,
@@ -232,7 +284,29 @@
         "sessionExpiry": ""
     },
     {
-        "id": "9cf08b7da591b815",
+        "id": "f48ab89f1f1d9be2",
+        "type": "ui_group",
+        "name": "Switch",
+        "tab": "bdb8ed9ccc5f91ae",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ac1fac2e281a3936",
+        "type": "ui_group",
+        "name": "Voltaje",
+        "tab": "bdb8ed9ccc5f91ae",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4e954bda12fdf9a2",
         "type": "influxdb",
         "hostname": "172.16.182.29",
         "port": "8086",
@@ -247,22 +321,22 @@
         "rejectUnauthorized": false
     },
     {
-        "id": "8b922718819a2d7b",
+        "id": "8b83edaadf622644",
         "type": "ui_group",
-        "name": "Homepage",
-        "tab": "b462dd833bf9e40b",
-        "order": 1,
+        "name": "Color",
+        "tab": "bdb8ed9ccc5f91ae",
+        "order": 3,
         "disp": true,
         "width": "6",
         "collapse": false,
         "className": ""
     },
     {
-        "id": "b462dd833bf9e40b",
+        "id": "bdb8ed9ccc5f91ae",
         "type": "ui_tab",
         "name": "Home",
         "icon": "dashboard",
         "disabled": false,
-        "hidden": true
+        "hidden": false
     }
 ]

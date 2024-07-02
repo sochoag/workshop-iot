@@ -34,6 +34,7 @@ float battery_voltage = 0.0;
 
 int vref = 1100;
 bool lightState = false;
+uint16_t lastColor = TFT_DARKGREEN;
 
 TFT_eSPI tft = TFT_eSPI(135, 240); // Invoke custom library
 
@@ -80,13 +81,13 @@ void showVoltage()
   Serial.println(voltage);
   if(!lightState)
   {
-    tft.setTextColor(TFT_WHITE, TFT_DARKGREEN);
-    tft.fillScreen(TFT_DARKGREEN);
+    tft.setTextColor(TFT_WHITE, lastColor);
+    tft.fillScreen(lastColor);
   }
   else
   {
-    tft.setTextColor(TFT_BLACK, TFT_GREEN);
-    tft.fillScreen(TFT_GREEN);
+    tft.setTextColor(TFT_BLACK, lastColor);
+    tft.fillScreen(lastColor);
   }
   tft.setTextDatum(MC_DATUM);
   tft.drawString(voltage,  tft.width() / 2, tft.height() / 2 );
@@ -115,6 +116,14 @@ void callback(char* topic, byte* payload, unsigned int length) {
     }
     showVoltage();
   }
+  if(strcmp(topic, "rgb") == 0)
+  {
+    uint32_t colorValue = strtol(payloadstr.c_str(), NULL, 16);
+    uint16_t color = tft.color565((colorValue >> 16) & 0xFF, (colorValue >> 8) & 0xFF, colorValue & 0xFF);
+    lastColor = color;
+    tft.fillScreen(color);
+    showVoltage();
+  }
 }
 
 void reconnect() {
@@ -131,6 +140,7 @@ void reconnect() {
       client.publish("outTopic", "Conectado");
       // ... and resubscribe
       client.subscribe("led");
+      client.subscribe("rgb");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
